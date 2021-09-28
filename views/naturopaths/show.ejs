@@ -1,0 +1,49 @@
+<% layout('/layouts/boilerplate') %>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <img src="<%=naturopath.image%>" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title"><%=naturopath.name%></h5>
+              <p class="card-text"><%=naturopath.description%></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%=naturopath.location%></li>
+          
+            </ul>
+            <div class="card-body">
+                <a class="card-link btn btn-secondary" href="/naturopaths/<%=naturopath._id%>/edit">Edit</a>
+                <form class="d-inline" action="/naturopaths/<%=naturopath._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+      <h2>Leave a Review</h2>
+            <form class="mb-3 needs-validation" action="/naturopaths/<%=naturopath._id%>/reviews" method="POST" novalidate>
+              <div class="mb-3">
+                <label class="form-label" for="rating">Rating</label>
+                <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
+              </div>
+                <div class="mb-3">
+                  <label class="form-label" for="body">Review</label>
+                  <textarea class="form-control" name="review[body]" id="body" cols="30" rows="4" id="review" required></textarea>
+                </div>
+                <button class="btn btn-success">Submit</button>
+              </form>
+          
+          <% for (let review of naturopath.reviews) { %>
+          <div class="mb-3 card">
+            <div class="card-body">
+              <h5 class="card-title">Rating: <%= review.rating%></h5>
+              <p class="card-title">Review: <%= review.body%></p>
+              <form action="/naturopaths/<%=naturopath._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                <button class="btn btn-sm btn-danger">Delete</button>
+              </form>
+            </div>
+          </div>
+          <%}%>
+        </div>
+  </div>
+

@@ -1,0 +1,27 @@
+<% layout('/layouts/boilerplate') %>
+<div class="row">
+    <h1 class="text-center">Add New Naturopath</h1>
+    <div class="col-6 offset-3 ">
+    
+        <form class="needs-validation" action="/naturopaths" method="POST" novalidate>
+            <div class="mb-3">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="naturopath[name]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" id="location" name="naturopath[location]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" id="description" name="naturopath[description]" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="image">Image URL</label>
+                <input class="form-control" type="text" id="image" name="naturopath[image]" required>
+            </div>
+            <button class="btn btn-primary">Add Naturopath</button>
+        </form>
+    </div>
+</div>
+
